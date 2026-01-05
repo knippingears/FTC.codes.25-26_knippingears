@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name = "TeleOP (goede)", group = "TeleOp")
-public class MecanumTeleOp extends LinearOpMode {
+public class TeleOP2026 extends LinearOpMode {
 
     private DcMotor frontLeft, frontRight, backLeft, backRight;
 

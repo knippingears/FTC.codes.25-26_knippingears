@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp(name = "intake test")
-public class intaketest1 extends OpMode {
+@TeleOp(name = "intake")
+public class Intakecode extends OpMode {
 
     Servo s1;
     Servo s2;
