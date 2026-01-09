@@ -23,19 +23,19 @@ public class teleOPtestdoublebind extends LinearOpMode {
     Servo s2;
 
     // Servo posities
-    double DOWN_S1 = 0.05;
-    double DOWN_S2 = 0.45;
+    double DOWN_S1 = 0;
+    double DOWN_S2 = 0.495;
 
     double HALF_UP_S1 = 0.25;
-    double HALF_UP_S2 = 0.25;
+    double HALF_UP_S2 = 0.21;
 
-    double UP_S1 = 0.5;
+    double UP_S1 = 0.46;
     double UP_S2 = 0.0;
 
     Servo s3;
 
     // Servo 3 posities
-    double S3_REST = 0.55;
+    double S3_REST = 0.52;
     double S3_ACTIVE = 1.0;
 
     // Timer voor servo 3
@@ -181,7 +181,7 @@ public class teleOPtestdoublebind extends LinearOpMode {
             }
 
             if (gamepad1.dpad_up) {
-                s4.setPosition(0.0); // naar boven
+                s4.setPosition(0.05); // naar boven
             }
 
             // Telemetry for debugging
