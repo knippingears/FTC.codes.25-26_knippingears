@@ -42,6 +42,7 @@ public class teleOPtestdoublebind extends LinearOpMode {
     ElapsedTime s3Timer = new ElapsedTime();
     boolean s3IsActive = false;
 
+    Servo s4;
 
 
 
@@ -76,7 +77,8 @@ public class teleOPtestdoublebind extends LinearOpMode {
         s3 = hardwareMap.get(Servo.class, "s3");
         s3.setPosition(S3_REST);
 
-
+        s4 = hardwareMap.get(Servo.class, "s4");
+        s4.setPosition(0.0); // startpositie
 
         waitForStart();
 
@@ -173,10 +175,14 @@ public class teleOPtestdoublebind extends LinearOpMode {
                 s3IsActive = false;
             }
 
+            // Servo s4 – player 1 D-pad
+            if (gamepad1.dpad_down) {
+                s4.setPosition(0.45); // naar beneden
+            }
 
-
-
-
+            if (gamepad1.dpad_up) {
+                s4.setPosition(0.0); // naar boven
+            }
 
             // Telemetry for debugging
             telemetry.addData("FL", frontLeftPower);
