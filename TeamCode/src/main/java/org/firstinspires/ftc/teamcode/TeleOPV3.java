@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name = "TeleOP test 1 double bind", group = "TeleOp")
-public class teleOPtestdoublebind extends LinearOpMode {
+@TeleOp(name = "TeleOP final", group = "TeleOp")
+public class TeleOPV3 extends LinearOpMode {
 
     private DcMotor frontLeft, frontRight, backLeft, backRight;
 
@@ -181,7 +181,7 @@ public class teleOPtestdoublebind extends LinearOpMode {
             }
 
             if (gamepad1.dpad_up) {
-                s4.setPosition(0.05); // naar boven
+                s4.setPosition(0.1); // naar boven
             }
 
             // Telemetry for debugging
