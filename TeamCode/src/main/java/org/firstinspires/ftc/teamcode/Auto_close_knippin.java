@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous(name = "Auto Shoot 1.5m", group = "Auto")
-public class AutoShootV1 extends LinearOpMode {
+public class Auto_close_knippin extends LinearOpMode {
 
     DcMotor frontLeft, frontRight, backLeft, backRight;
     DcMotor launcherLeft, launcherRight;
@@ -27,7 +27,7 @@ public class AutoShootV1 extends LinearOpMode {
     double S3_ACTIVE = 1.0;
 
     // ===== DRIVE CONSTANTS =====
-    static final double WHEEL_DIAMETER_M = 0.096;
+    static final double WHEEL_DIAMETER_M = 0.075;
     static final double TICKS_PER_REV = 537.6; // ⚠️ pas aan indien nodig
     static final double DISTANCE_M = 1.5;
 
@@ -65,7 +65,7 @@ public class AutoShootV1 extends LinearOpMode {
         waitForStart();
 
         // ===== 1. RIJD 1,5 METER ACHTERUIT =====
-        driveDistance(-DISTANCE_M, 0.5);
+        driveDistance(DISTANCE_M, 0.5);
 
         // ===== 2. START LAUNCHERS =====
         launcherLeft.setPower(0.5);
