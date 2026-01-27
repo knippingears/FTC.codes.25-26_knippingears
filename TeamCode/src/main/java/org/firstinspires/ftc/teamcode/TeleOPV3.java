@@ -78,7 +78,7 @@ public class TeleOPV3 extends LinearOpMode {
         s3.setPosition(S3_REST);
 
         s4 = hardwareMap.get(Servo.class, "s4");
-        s4.setPosition(0.0); // startpositie
+        s4.setPosition(0.2); // startpositie
 
         waitForStart();
 
@@ -176,12 +176,12 @@ public class TeleOPV3 extends LinearOpMode {
             }
 
             // Servo s4 – player 1 D-pad
-            if (gamepad1.dpad_down) {
+            if (gamepad2.dpad_down) {
                 s4.setPosition(0.45); // naar beneden
             }
 
-            if (gamepad1.dpad_up) {
-                s4.setPosition(0.1); // naar boven
+            if (gamepad2.dpad_up) {
+                s4.setPosition(0.2); // naar boven
             }
 
             // Telemetry for debugging

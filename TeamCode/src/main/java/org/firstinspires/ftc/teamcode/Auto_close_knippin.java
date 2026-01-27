@@ -28,7 +28,7 @@ public class Auto_close_knippin extends LinearOpMode {
 
     // ===== DRIVE CONSTANTS =====
     static final double WHEEL_DIAMETER_M = 0.075;
-    static final double TICKS_PER_REV = 537.6; // ⚠️ pas aan indien nodig
+    static final double TICKS_PER_REV = 140; // ⚠️ pas aan indien nodig
     static final double DISTANCE_M = 1.5;
 
     @Override
