@@ -11,7 +11,7 @@ public class Auto_close_knippin extends LinearOpMode {
     DcMotor frontLeft, frontRight, backLeft, backRight;
     DcMotor launcherLeft, launcherRight;
 
-    Servo s1, s2, s3;
+    Servo s1, s2, s3, s4;
 
     // ===== SERVO POSITIES (uit TeleOp) =====
     double DOWN_S1 = 0;
@@ -26,10 +26,11 @@ public class Auto_close_knippin extends LinearOpMode {
     double S3_REST = 0.52;
     double S3_ACTIVE = 1.0;
 
+
     // ===== DRIVE CONSTANTS =====
     static final double WHEEL_DIAMETER_M = 0.075;
     static final double TICKS_PER_REV = 140; // ⚠️ pas aan indien nodig
-    static final double DISTANCE_M = 1.5;
+    static final double DISTANCE_M = 1;
 
     @Override
     public void runOpMode() {
@@ -59,6 +60,9 @@ public class Auto_close_knippin extends LinearOpMode {
 
         s3.setPosition(S3_REST);
 
+        s4 = hardwareMap.get(Servo.class, "s4");
+        s4.setPosition(0.3); // omhoog bij init
+
         // Encoders reset
         resetDriveEncoders();
 
@@ -74,16 +78,16 @@ public class Auto_close_knippin extends LinearOpMode {
         // ===== 3. SCHIET 3 BALLEN =====
         for (int i = 0; i < 3; i++) {
 
-            sleep(2000); // launcher op snelheid
+            sleep(5000); // launcher op snelheid
 
             // Schiet
             s3.setPosition(S3_ACTIVE);
             sleep(400);
             s3.setPosition(S3_REST);
-            sleep(400);
+            sleep(2000);
 
-            // Na eerste bal → intake omhoog
-            if (i == 0) {
+// Na bal 1 en bal 2 → intake omhoog en terug
+            if (i == 0 || i == 1) {
                 s1.setPosition(UP_S1);
                 s2.setPosition(UP_S2);
                 sleep(500);
@@ -91,6 +95,7 @@ public class Auto_close_knippin extends LinearOpMode {
                 s1.setPosition(HALF_UP_S1);
                 s2.setPosition(HALF_UP_S2);
             }
+
         }
 
         // Stop launcher

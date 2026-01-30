@@ -35,7 +35,7 @@ public class TeleOPV3 extends LinearOpMode {
     Servo s3;
 
     // Servo 3 posities
-    double S3_REST = 0.52;
+    double S3_REST = 0.51;
     double S3_ACTIVE = 1.0;
 
     // Timer voor servo 3
@@ -61,11 +61,10 @@ public class TeleOPV3 extends LinearOpMode {
         launcherLeft = hardwareMap.get(DcMotor.class, "launcherLeft");
         launcherRight = hardwareMap.get(DcMotor.class, "launcherRight");
 
+        final double LAUNCHER_POWER = 0.5;
         launcherLeft.setDirection(DcMotor.Direction.FORWARD);
         launcherRight.setDirection(DcMotor.Direction.REVERSE);
 
-        launcherLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        launcherRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         s1 = hardwareMap.get(Servo.class, "s1");
         s2 = hardwareMap.get(Servo.class, "s2");
@@ -89,24 +88,19 @@ public class TeleOPV3 extends LinearOpMode {
 
             // Joystick inputs
             double y    =  gamepad1.left_stick_y;    // forward/back
-            double x    = -gamepad1.right_stick_x;    // strafe
-            double turn = -gamepad1.left_stick_x;   // rotation
+            double x    = -gamepad1.left_stick_x;    // strafe
+            double turn = -gamepad1.right_stick_x;   // rotation
 
             double rightTrigger = gamepad2.right_trigger;
             double leftTrigger = gamepad2.left_trigger;
 
             if (rightTrigger > 0.1) {
-                launcherLeft.setPower(rightTrigger);
-                launcherRight.setPower(rightTrigger);
+                launcherLeft.setPower(LAUNCHER_POWER);
+                launcherRight.setPower(LAUNCHER_POWER);
             } else if (leftTrigger > 0.1) {
                 launcherLeft.setPower(0.0);
                 launcherRight.setPower(0.0);
             }
-            double launcherLeftSpeed = launcherLeft.getCurrentPosition() / deltaTime;
-            double launcherRightSpeed = launcherLeft.getCurrentPosition() / deltaTime;
-            telemetry.addData("MotorSpeed Left: ", launcherLeftSpeed);
-            telemetry.addData("MotorSpeed Right: ", launcherRightSpeed);
-
 
             // Mecanum drive formulas
             double frontLeftPower  = y + x + turn;
@@ -139,19 +133,19 @@ public class TeleOPV3 extends LinearOpMode {
             backRight.setPower(backRightPower);
 
             // Volledig omhoog → RB (player 1)
-            if (gamepad1.right_bumper) {
+            if (gamepad2.y) {
                 s1.setPosition(UP_S1);
                 s2.setPosition(UP_S2);
             }
 
              // Half omhoog → LB (player 1)
-            else if (gamepad1.left_bumper) {
+            else if (gamepad2.x) {
                 s1.setPosition(HALF_UP_S1);
                 s2.setPosition(HALF_UP_S2);
             }
 
               // Omlaag → rechter trigger (player 1)
-            else if (gamepad1.right_trigger > 0.5) {
+            else if (gamepad2.a) {
                 s1.setPosition(DOWN_S1);
                 s2.setPosition(DOWN_S2);
             }
@@ -176,11 +170,11 @@ public class TeleOPV3 extends LinearOpMode {
             }
 
             // Servo s4 – player 1 D-pad
-            if (gamepad2.dpad_down) {
+            if (gamepad1.right_bumper) {
                 s4.setPosition(0.45); // naar beneden
             }
 
-            if (gamepad2.dpad_up) {
+            if (gamepad1.left_bumper) {
                 s4.setPosition(0.2); // naar boven
             }
 
