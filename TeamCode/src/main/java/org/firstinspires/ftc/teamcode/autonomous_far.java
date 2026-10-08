@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous(name = "autonomous far", group = "Auto")
-public class atonomous_far extends LinearOpMode {
+public class autonomous_far extends LinearOpMode {
 
     DcMotor frontLeft, frontRight, backLeft, backRight;
     DcMotor launcherLeft, launcherRight;

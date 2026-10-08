@@ -55,7 +55,7 @@ public class TeleOPV3 extends LinearOpMode {
         backRight  = hardwareMap.get(DcMotor.class, "backRight");
 
         // Reverse the right side so positive power makes the robot go forward
-        frontRight.setDirection(DcMotor.Direction.REVERSE);
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);
         backRight.setDirection(DcMotor.Direction.REVERSE);
 
         launcherLeft = hardwareMap.get(DcMotor.class, "launcherLeft");
